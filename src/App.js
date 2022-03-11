@@ -1,23 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import HomePage from './pages/HomePage';
+import PrivacyPolicy from './pages/PrivacyPage';
+import NavBar from './NavBar';
+import Footer from './Footer';
+import NotFoundPage from './pages/NotFoundPage';
+
+import {
+	BrowserRouter,
+  Routes,
+	Route
+} from 'react-router-dom';
+
+
+import 'bootstrap/dist/css/bootstrap.css'; 
+import 'jquery/dist/jquery.min.js';
+import 'popper.js/dist/umd/popper.min.js';
+import 'bootstrap/dist/js/bootstrap.min.js';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <BrowserRouter>
+        <NavBar />
+        <div class="container">
+          <Routes>
+            <Route path="/" element={<HomePage/>} exact />
+            <Route path="/Home/Privacy" element={<PrivacyPolicy/>} exact />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </div>
+        <Footer />
+      </BrowserRouter>
+
     </div>
   );
 }
